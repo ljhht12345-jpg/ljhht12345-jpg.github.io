@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/SW Career Path - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0e14;
+            --card-bg: #161b22;
+            --accent-green: #39ff14;
+            --accent-blue: #00d4ff;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --nav-bg: rgba(10, 14, 20, 0.8);
+            --box-bg: rgba(0, 212, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            height: 70px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-green); }
+
+        section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; }
+        h2 {
+            font-size: 2.5rem; margin-bottom: 20px; text-align: center;
+            background: linear-gradient(to right, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* 중요 역량 설명 (소개와 분리되었지만 가까운 위치) */
+        .skill-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 15px;
+            border-bottom: 1px dashed var(--text-dim);
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        .skill-intro span { color: var(--accent-green); border-bottom: 2px solid var(--accent-green); }
+
+        .job-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card {
+            background: var(--card-bg); padding: 30px; border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent-blue); }
+        .card h3 { color: var(--accent-blue); margin-bottom: 15px; }
+
+        /* 핵심 역량 선정 이유 상자 */
+        .why-box {
+            background: var(--box-bg);
+            border: 1px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+        }
+        .why-box strong { display: block; margin-bottom: 5px; color: var(--text-main); }
+
+        .comp-item { margin-bottom: 40px; padding-left: 20px; border-left: 3px solid var(--accent-green); }
+        .comp-item h3 { font-size: 1.3rem; margin-bottom: 10px; }
+
+        /* Timeline */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after {
+            content: ''; position: absolute; width: 2px; background: var(--accent-blue);
+            top: 0; bottom: 0; left: 50%; margin-left: -1px;
+        }
+        .container { padding: 10px 40px; position: relative; width: 50%; }
+        .container::after {
+            content: ''; position: absolute; width: 16px; height: 16px;
+            right: -8px; background-color: var(--bg-color);
+            border: 3px solid var(--accent-green); top: 20px; border-radius: 50%; z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -8px; }
+        .content { padding: 20px; background: var(--card-bg); border-radius: 10px; }
+
+        /* 로드맵 결과값 (Outcome) */
+        .outcome-card {
+            margin-top: 50px;
+            background: linear-gradient(145deg, #161b22, #0a0e14);
+            border: 2px solid var(--accent-green);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .outcome-card h3 { color: var(--accent-green); font-size: 1.8rem; margin-bottom: 20px; }
+
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding-left: 70px; }
+            .container::after { left: 22px; }
+            .right { left: 0%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#future-jobs">미래 유망 직무</a>
+        <a href="#competencies">핵심 필수 역량</a>
+        <a href="#roadmap">나의 4년 로드맵</a>
+    </nav>
+
+    <!-- Section 1: Future Jobs -->
+    <section id="future-jobs">
+        <h2>Future IT Blue Ocean</h2>
+        <!-- 직무 소개 바로 위에 붙은 중요 역량 설명 -->
+        <div class="skill-intro">
+            2026년 블루오션 직무에서 가장 요구되는 능력은 <span>'복합 시스템 설계'</span>, <span>'도메인 맥락 이해'</span>, 그리고 <span>'윤리적 보안 대응'</span> 역량입니다. [1-3]
+        </div>
+
+        <div class="job-grid">
+            <div class="card">
+                <h3>AI 에이전트 오케스트레이터</h3>
+                <p>여러 AI 에이전트가 협력하여 복합 목표를 달성하도록 전체 시스템을 조율하는 역할입니다. [1]</p>
+            </div>
+            <div class="card">
+                <h3>AI 보안 및 거버넌스 전문가</h3>
+                <p>프롬프트 인젝션 방어 및 글로벌 규제에 대응하며 신뢰할 수 있는 AI 체계를 구축합니다. [2]</p>
+            </div>
+            <div class="card">
+                <h3>도메인 특화 AI 엔지니어</h3>
+                <p>특정 산업(의료, 금융 등)의 맥락을 이해하고 해당 분야에 최적화된 DSLM을 설계합니다. [3]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Competencies -->
+    <section id="competencies">
+        <h2>Core Competencies</h2>
+        <div class="comp-item">
+            <h3>1. AI 에이전트 오케스트레이션</h3>
+            <p>다중 에이전트 시스템(MAS)을 설계하고 관리하는 능력입니다. [4]</p>
+            <div class="why-box">
+                <strong>💡 역량이 필요한 이유</strong>
+                2026년까지 기업용 앱의 40%에 에이전틱 AI가 탑재될 전망이며, 단일 챗봇 구조를 넘어선 지능형 워크플로우로의 전환이 가속화되고 있기 때문입니다. [1, 4]
+            </div>
+        </div>
+        <div class="comp-item">
+            <h3>2. 도메인 특화 비판적 사고력</h3>
+            <p>산업적 맥락에서 AI 결과물을 검증하고 최적의 솔루션을 도출하는 능력입니다. [5]</p>
+            <div class="why-box">
+                <strong>💡 역량이 필요한 이유</strong>
+                2028년까지 생성형 AI 모델의 절반 이상이 도메인 특화 모델(DSLM)로 대체될 예정이며, AI 의존에 따른 리스크를 방어할 'AI Free' 문제 해결 능력이 필수적입니다. [3, 5]
+            </div>
+        </div>
+        <div class="comp-item">
+            <h3>3. AI 거버넌스 및 융합 협업</h3>
+            <p>보안 리스크를 관리하며 인간과 AI가 공존하는 환경을 리드하는 역량입니다. [6]</p>
+            <div class="why-box">
+                <strong>💡 역량이 필요한 이유</strong>
+                보안 리스크 관리 역할이 AI 엔지니어링 조직으로 이동하고 있으며, 미래 AI 경쟁력의 핵심은 인간 관계 역량을 바탕으로 한 리더십에 있기 때문입니다. [2, 6]
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Roadmap + Outcome -->
+    <section id="roadmap">
+        <h2>4-Year Roadmap & Final Goal</h2>
+        <div class="timeline">
+            <div class="container left"><div class="content"><h3>1학년: Foundation</h3><p>CS 기초 및 AI 리터러시 함양 [7]</p></div></div>
+            <div class="container right"><div class="content"><h3>2학년: Specialization</h3><p>도메인 지식 및 하이브리드 AI 학습 [8]</p></div></div>
+            <div class="container left"><div class="content"><h3>3학년: Core</h3><p>MAS 아키텍처 및 API 오케스트레이션 설계 [8]</p></div></div>
+            <div class="container right"><div class="content"><h3>4학년: Vanguard</h3><p>보안 가드레일 적용 및 실전 서비스 배치 [9]</p></div></div>
+        </div>
+
+        <!-- 로드맵 이후의 결과값 -->
+        <div class="outcome-card">
+            <h3>The Irreplaceable Vanguard</h3>
+            <p>4년의 로드맵을 마친 당신은 단순히 기술을 구현하는 개발자를 넘어, <strong>기술의 신뢰를 확보하고 비즈니스 가치를 창출하는 대체 불가능한 인재</strong>로 거듭납니다. [9]</p>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-dim);">
+                비판적 사고, 탁월한 커뮤니케이션, 그리고 책임 있는 혁신을 실천하는 '뱅가드(Vanguard) 마인드셋'이 당신의 가장 강력한 무기가 될 것입니다. [9]
+            </p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px; color: var(--text-dim); font-size: 0.8rem;">
+        &copy; 2026 AI Agent Orchestrator Portfolio. Based on Gartner's Strategic Trends Analysis.
+    </footer>
+
+</body>
+</html>
